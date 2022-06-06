@@ -28,5 +28,18 @@ async function userlercedveliniduzelt(){
     let cedvel = userlercedveli();
     $('#userler').empty();
     $('#userler').append(cedvel);
-    let userlerigetir = await 
+    try {
+        let userlerigetir = await ajaxlar.userler().get();
+        for (let i = 0; i < userlerigetir.length; i++) {
+            let userler = userlerigetir[i];
+            let setirler = userlersetir(userler);
+            $('#userler-body').append(setirler);
+            
+        }
+    
+    } catch (error) {
+        alert('olmadi')
+    }
+   
+
 }
